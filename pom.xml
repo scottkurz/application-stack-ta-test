@@ -5,13 +5,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <!--required parent POM-->
-        <groupId>dev.appsody</groupId>
-        <artifactId>java-openliberty</artifactId>
-        <version>[0.1, 0.3)</version>
-    </parent>
-
     <groupId>dev.appsody.starter.java-openliberty</groupId>
     <artifactId>tamigration</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -19,6 +12,9 @@
 
     <properties>
         <file.repo.name>assets</file.repo.name>
+        <version.liberty-maven-plugin>3.3-M3</version.liberty-maven-plugin>
+        <version.maven-war-plugin>3.2.2</version.maven-war-plugin>
+        <version.maven-surefire-plugin>3.0.0-M1</version.maven-surefire-plugin>
     </properties>
 
     <repositories>
@@ -83,6 +79,7 @@
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
+                <version>${version.liberty-maven-plugin}</version>
                 <configuration>
                     <assemblyArtifact>
                         <groupId>${liberty.groupId}</groupId>
@@ -92,10 +89,11 @@
                     </assemblyArtifact>
                     <stripVersion>true</stripVersion>
                     <serverStartTimeout>120</serverStartTimeout>
+                    <installAppPackages>dependencies</installAppPackages>
                     <bootstrapProperties>
-                        <default.http.port>${http.port}</default.http.port>
-                        <default.https.port>${https.port}</default.https.port>
-                        <app.context.root>${app.name}</app.context.root>
+                        <!-- default.http.port>${http.port}</default.http.port -->
+                        <!-- default.https.port>${https.port}</default.https.port -->
+                        <!-- app.context.root>${app.name}</app.context.root -->
                     </bootstrapProperties>
                 </configuration>
             </plugin>
